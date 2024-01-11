@@ -57,8 +57,8 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 RUN pip install gdown 
 # add gdown to PATH 
 ENV PATH="/home/vscode/.local/bin:${PATH}"
-RUN gdown https://drive.google.com/uc?export=download&id=1c-lkzojvPhJMi9L0NKDFBjQN6KmS_Ypf -O /home/vscode/openfold.tar.gz && \
-    gdown https://drive.google.com/uc?export=download&id=1ZDGTDTr1ApFV8h_KPBpcvWsG_K_9DZs8 -O /home/vscode/esm-main.tar.gz
+RUN gdown 1c-lkzojvPhJMi9L0NKDFBjQN6KmS_Ypf -O /home/vscode/openfold.tar.gz && \
+    gdown 1ZDGTDTr1ApFV8h_KPBpcvWsG_K_9DZs8 -O /home/vscode/esm-main.tar.gz
 COPY create-env.sh /home/vscode/create-env.sh
 
 # install openfold conda env 
@@ -79,9 +79,9 @@ RUN zsh /home/vscode/create-env.sh
 
 # use gdown to download above files from google drive 
 RUN mkdir -p /home/vscode/.cache/torch/hub/checkpoints && \
-    gdown https://drive.google.com/uc?export=download&id=1rzzmhiGiRcZpGZp6PLsG-4ubbg6osdEA -O /home/vscode/.cache/torch/hub/checkpoints/esm2_t36_3B_UR50D-contact-regression.pt && \
-    gdown https://drive.google.com/uc?export=download&id=160RaVXmVr6WVx7FAe1r5xoLDizm7JWdf -O /home/vscode/.cache/torch/hub/checkpoints/esm2_t36_3B_UR50D.pt && \
-    gdown https://drive.google.com/uc?export=download&id=1RywywZV7AiGGT3r43dUUX03b1UP2R_vX -O /home/vscode/.cache/torch/hub/checkpoints/esmfold_3B_v1.pt
+    gdown 1rzzmhiGiRcZpGZp6PLsG-4ubbg6osdEA -O /home/vscode/.cache/torch/hub/checkpoints/esm2_t36_3B_UR50D-contact-regression.pt && \
+    gdown 160RaVXmVr6WVx7FAe1r5xoLDizm7JWdf -O /home/vscode/.cache/torch/hub/checkpoints/esm2_t36_3B_UR50D.pt && \
+    gdown 1RywywZV7AiGGT3r43dUUX03b1UP2R_vX -O /home/vscode/.cache/torch/hub/checkpoints/esmfold_3B_v1.pt
 
 # change permission 
 RUN sudo chmod -R 777 /home/vscode/.cache/torch/hub/checkpoints
